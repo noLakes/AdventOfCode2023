@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "8G8aM2sJ3AFAPiCpubZYqAilcBGH18Us1V+URj9H2uV/f0AimY5Uh3MFvyiLUl9ZGEsM9xE+zW+j5Whxqqs0wQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\shan.richardson\\Desktop\\AOC2023\\AOC2023.Console\\AOC2023.Console.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\shan.richardson\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.14\\microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\shan.richardson\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.14\\microsoft.windowsdesktop.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\shan.richardson\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.14\\microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\shan.richardson\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.14\\microsoft.netcore.app.host.win-x64.7.0.14.nupkg.sha512"
+  ],
+  "logs": []
+}
