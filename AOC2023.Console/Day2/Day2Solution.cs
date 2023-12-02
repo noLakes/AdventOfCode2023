@@ -6,17 +6,7 @@ namespace AOC2023.Console.Day2;
 public class Day2Solution : ISolution
 {
     public int Day => 2;
-
-    // test sample for part 2
-    private string[] _test = new[]
-    {
-        "Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green",
-        "Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue",
-        "Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red",
-        "Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red",
-        "Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"
-    };
-
+    
     private int _redThreshold = 12;
     private int _greenThreshold = 13;
     private int _blueThreshold = 14;
@@ -28,26 +18,36 @@ public class Day2Solution : ISolution
         foreach (var line in input) games.Add(new Game(line));
 
         // ----- solution 1 start
+        /*
         int sum = games
             .Where(g => g.RedMax <= _redThreshold && g.GreenMax <= _greenThreshold && g.BlueMax <= _blueThreshold)
-            .Sum(g => g.GameValue);
+            .Sum(g => g.ID);
 
         return sum.ToString();
+        */
         // ----- solution 1 end
+
+        // ----- solution 2 start
+        
+        var total = games.Sum(g => g.Power);
+        return total.ToString();
+        
+        // ----- solution 2 end
     }
     
 }
 
 public class Game
 {
-    public readonly int GameValue;
+    public readonly int ID;
     public int BlueMax;
     public int RedMax;
     public int GreenMax;
+    public int Power => RedMax * BlueMax * GreenMax;
     
     public Game(string input)
     {
-        GameValue = int.Parse(Regex.Match(input, @"\d+").Groups[0].Value); // works
+        ID = int.Parse(Regex.Match(input, @"\d+").Groups[0].Value); // works
         CalculateMaxValues(input);
     }
 
