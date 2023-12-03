@@ -10,7 +10,6 @@ public class Day3Solution : ISolution
 
     public string Solve(string[] input)
     {
-        /*
         input = new string[]
         {
             "467..114.......",
@@ -20,12 +19,17 @@ public class Day3Solution : ISolution
             "617*...........",
             ".....+.58......",
             "..592..........",
-            "......755...*33",
+            "......755......",
             "...$.*.........",
             ".664.598......."
         };
-        */
-
+        
+        //return SolvePart1(input);
+        return SolvePart2(input);
+    }
+    
+    private string SolvePart1(string[] input)
+    {
         var total = 0;
         
         for (var row = 0; row < input.Length; row++)
@@ -47,7 +51,7 @@ public class Day3Solution : ISolution
                 }
 
                 digits += input[row][col];
-                if (!match) match = CheckForSymbols(input, row, col); // check for match
+                if (!match) match = CheckForSymbols(input, (row, col)); // check for match
 
                 if (col == input[row].Length - 1 && match && digits.Length > 0)
                 {
@@ -59,20 +63,42 @@ public class Day3Solution : ISolution
         return total.ToString();
     }
     
-    private bool CheckForSymbols(string[] input, int y, int x)
+    private string SolvePart2(string[] input)
+    {
+        int result = 0;
+        for (var row = 0; row < input.Length; row++)
+        {
+            for (var col = 0; col < input[row].Length; col++)
+            {
+                if(input[row][col] != '*') continue;
+                var gears = CollectAdjacentGears(input, (row, col));
+                if (gears.Count == 2) result += gears[0] * gears[1];
+            }
+        }
+        
+        return result.ToString();
+    }
+    
+    private bool CheckForSymbols(string[] input, (int, int) pos)
     {
         foreach (var coord in _coords)
         {
-            var posY = y + coord.Item1;
-            var posX = x + coord.Item2;
-
-            if (posY < 0 || posY >= input.Length || posX < 0 || posX >= input[0].Length) continue;
-
-            char c = input[posY][posX];
+            var newPos = (Y: pos.Item1 + coord.Item1, X: pos.Item2 + coord.Item2);
+            if (newPos.Y < 0 || newPos.Y >= input.Length || newPos.X < 0 || newPos.X >= input[0].Length) continue;
+            var c = input[newPos.Y][newPos.X];
             if (!char.IsDigit(c) && c != '.') return true;
         }
         
         return false;
+    }
+
+    private List<int> CollectAdjacentGears(string[] input, (int, int) pos)
+    {
+        var gears = new List<int>();
+
+        // solution to isolating adjacent numbers and adding to gear list
+        
+        return gears;
     }
     
 }
