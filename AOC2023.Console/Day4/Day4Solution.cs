@@ -8,25 +8,18 @@ public class Day4Solution : ISolution
     public int Day => 4;
     public string Solve(string[] input)
     {
-        /*
-        input = new string[]
-        {
-            "Card 147: 1 2 3 4 5 6 7 8 9 10 | 9 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45"
-        };
-        */
+        return SolvePart2(input);
+    }
 
+    private string SolvePart1(string[] input)
+    {
         var totalScore = 0;
 
         foreach (var line in input)
         {
             var score = 0;
             var parsedInput = ParseScratchCard(line);
-            var winningNums = 0;
-            System.Console.WriteLine($"{string.Join(" ", parsedInput[..10])}\n{string.Join(" ", parsedInput[10..])}");
-            foreach (var num in parsedInput[10..])
-            {
-                if (parsedInput[..10].Contains(num)) winningNums++;
-            }
+            var winningNums = parsedInput[10..].Count(num => parsedInput[..10].Contains(num));
 
             if (winningNums == 0)
             {
@@ -35,8 +28,32 @@ public class Day4Solution : ISolution
             for (int i = 0; i < winningNums; i++) score = i == 0 ? 1 : score * 2;
             totalScore += score;
         }
-        
 
+        return totalScore.ToString();
+    }
+
+    private string SolvePart2(string[] input)
+    {
+        var totalScore = 0;
+        var duplicates = new int[input.Length];
+        
+        for (var i = 0; i < input.Length; i++)
+        {
+            var parsedInput = ParseScratchCard(input[i]);
+            var winningNums = parsedInput[10..].Count(num => parsedInput[..10].Contains(num));
+
+            for (var d = 0; d <= duplicates[i]; d++)
+            {
+                for (var j = 1; j <= winningNums; j++)
+                {
+                    if (i + j >= input.Length) break;
+                    duplicates[i + j]++;
+                }
+            
+                totalScore ++;
+            }
+        }
+        
         return totalScore.ToString();
     }
 
