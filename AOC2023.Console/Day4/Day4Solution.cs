@@ -11,12 +11,7 @@ public class Day4Solution : ISolution
         /*
         input = new string[]
         {
-            "Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53",
-            "Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19",
-            "Card 3:  1 21 53 59 44 | 69 82 63 72 16 21 14  1",
-            "Card 4: 41 92 73 84 69 | 59 84 76 51 58  5 54 83",
-            "Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36",
-            "Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"
+            "Card 147: 1 2 3 4 5 6 7 8 9 10 | 9 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45"
         };
         */
 
@@ -27,11 +22,16 @@ public class Day4Solution : ISolution
             var score = 0;
             var parsedInput = ParseScratchCard(line);
             var winningNums = 0;
-            foreach (var num in parsedInput[..10])
+            System.Console.WriteLine($"{string.Join(" ", parsedInput[..10])}\n{string.Join(" ", parsedInput[10..])}");
+            foreach (var num in parsedInput[10..])
             {
-                if (parsedInput[10..].Contains(num)) winningNums++;
+                if (parsedInput[..10].Contains(num)) winningNums++;
             }
-            
+
+            if (winningNums == 0)
+            {
+                continue;
+            }
             for (int i = 0; i < winningNums; i++) score = i == 0 ? 1 : score * 2;
             totalScore += score;
         }
@@ -42,9 +42,8 @@ public class Day4Solution : ISolution
 
     private string[] ParseScratchCard(string input)
     {
-        var nums = Regex.Matches(input, @"\s+(\d+)(?!:)")
+        var nums = Regex.Matches(input.Split(":")[1], @"\s+(\d+)(?!:)")
             .Select(m => m.Groups[1].Value).ToArray();
-        //var nums2 = nums.Select(int.Parse).ToArray();
         return nums;
     }
 }

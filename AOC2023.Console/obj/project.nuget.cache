@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "l3zjAJ1iJU3pKYqhWuSvTmc22B1w3kPlxH6mk8g6yeCmo7A29j2V20N+e/CJgpeMSekk7TAtWa1lFLrDH2mIFg==",
+  "dgSpecHash": "CHmxQXz3r3iR6+4o6em9mDIniR8N001fSDP7b25ZncQgIw7QPdpBtFXSilFK6qrBoSrOi/Km4U2B0mqokX3GYA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\shan.richardson\\Desktop\\AdventOfCode2023\\AOC2023.Console\\AOC2023.Console.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\shan.richardson\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.14\\microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
-    "C:\\Users\\shan.richardson\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.14\\microsoft.windowsdesktop.app.ref.7.0.14.nupkg.sha512",
-    "C:\\Users\\shan.richardson\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.14\\microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512",
-    "C:\\Users\\shan.richardson\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\7.0.14\\microsoft.netcore.app.host.win-x64.7.0.14.nupkg.sha512"
-  ],
+  "projectFilePath": "/Users/shan/code/AdventOfCode2023/AOC2023.Console/AOC2023.Console.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
