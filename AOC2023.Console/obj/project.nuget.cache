@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "CHmxQXz3r3iR6+4o6em9mDIniR8N001fSDP7b25ZncQgIw7QPdpBtFXSilFK6qrBoSrOi/Km4U2B0mqokX3GYA==",
+  "dgSpecHash": "VQHoG68WncKsUTSZXbNxDkX3jKs/QmjVQf4slliiz4ICnhodk2mlkdg3FNM8i2INcvJrQHSs5cLMNDcjKGDc/w==",
   "success": true,
-  "projectFilePath": "/Users/shan/code/AdventOfCode2023/AOC2023.Console/AOC2023.Console.csproj",
+  "projectFilePath": "C:\\Users\\Shan\\Documents\\code\\AdventOfCode2023\\AOC2023.Console\\AOC2023.Console.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
