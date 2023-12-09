@@ -48,6 +48,9 @@ public class Day7Solution : ISolution
         // join lists in desc order from fiveOfKind => highCard
         // calculate bets
         
+        // Note: if the IComparable<Hand> implementation works well, then you can refactor the solution to have 
+        // CompareTo() order first by handtype and then by highcard!
+        
         return $"s";
     }
     
