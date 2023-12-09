@@ -43,10 +43,15 @@ public class Day7Solution : ISolution
             System.Console.WriteLine($"Hand: {hand.cards} / Type: {hand.type} / Bet: {hand.bet}");
         }
         
+        // all you need to do to test now is:
+        // sort lists
+        // join lists in desc order from fiveOfKind => highCard
+        // calculate bets
+        
         return $"s";
     }
     
-    private struct Hand
+    private struct Hand : IComparable<Hand>
     {
         public string cards;
         public HandType type;
@@ -95,6 +100,17 @@ public class Day7Solution : ISolution
             {
                 highCardValues[i] = cardOrder.IndexOf(cards[i]);
             }
+        }
+
+        public int CompareTo(Hand other)
+        {
+            for (var i = 0; i < cards.Length -1; i++)
+            {
+                var cardOrderComparison = highCardValues[i].CompareTo(other.highCardValues[i]);
+                if (cardOrderComparison != 0) return cardOrderComparison;
+            }
+
+            return highCardValues[^1].CompareTo(other.highCardValues[^1]);
         }
     }
     
