@@ -18,6 +18,7 @@ public class Day7Solution : ISolution
 
     public string Solve(string[] input)
     {
+        /*
         input = new string[]
         {
             "32T3K 765",
@@ -26,32 +27,25 @@ public class Day7Solution : ISolution
             "KTJJT 220",
             "QQQJA 483"
         };
+        */
         
         return SolvePart1(input);
     }
 
     private string SolvePart1(string[] input)
     {
-        Dictionary<HandType, List<Hand>> hands = new Dictionary<HandType, List<Hand>>();
-
+        var hands = new List<Hand>();
         foreach (var line in input)
         {
             var hand = new Hand(line.Split(" ")[0], int.Parse(line.Split(" ")[1]));
-            if (!hands.ContainsKey(hand.type)) hands[hand.type] = new List<Hand>();
-            hands[hand.type].Add(hand);
-            
-            System.Console.WriteLine($"Hand: {hand.cards} / Type: {hand.type} / Bet: {hand.bet}");
+            hands.Add(hand);
         }
+        hands.Sort();
+        hands.Reverse();
         
-        // all you need to do to test now is:
-        // sort lists
-        // join lists in desc order from fiveOfKind => highCard
-        // calculate bets
-        
-        // Note: if the IComparable<Hand> implementation works well, then you can refactor the solution to have 
-        // CompareTo() order first by handtype and then by highcard!
-        
-        return $"s";
+        var result = hands.Sum(hand => hand.bet * (hands.IndexOf(hand) + 1));
+
+        return $"Result: {result}";
     }
     
     private struct Hand : IComparable<Hand>
@@ -107,13 +101,16 @@ public class Day7Solution : ISolution
 
         public int CompareTo(Hand other)
         {
+            var handValueComparison = other.type.CompareTo(type);
+            if (handValueComparison != 0) return handValueComparison;
+            
             for (var i = 0; i < cards.Length -1; i++)
             {
-                var cardOrderComparison = highCardValues[i].CompareTo(other.highCardValues[i]);
+                var cardOrderComparison = other.highCardValues[i].CompareTo(highCardValues[i]);
                 if (cardOrderComparison != 0) return cardOrderComparison;
             }
 
-            return highCardValues[^1].CompareTo(other.highCardValues[^1]);
+            return other.highCardValues[^1].CompareTo(highCardValues[^1]);
         }
     }
     
